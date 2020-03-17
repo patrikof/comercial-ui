@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+  }
+  
+  tr.mat-footer-row {
+    font-weight: bold;
+  }
+
+  .card {
+    max-width: 400px;
+  }
+
+  .input-full-width {
+    width: 100%;
+  }
+
+  .form-cadastro {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }

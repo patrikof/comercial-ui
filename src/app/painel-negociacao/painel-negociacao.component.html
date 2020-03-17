@@ -1,0 +1,54 @@
+<mat-card class="">
+    <mat-card-header>
+        <mat-card-title>Nova Oportunidade</mat-card-title>
+    </mat-card-header>
+    <form class="form-cadastro">
+        <mat-card-content>
+
+            <mat-form-field class="input-full-width">
+                <mat-label>Descrição</mat-label>
+                <input matInput placeholder="Descrição" [(ngModel)]="oportunidade.descricao" name="descricao" />
+            </mat-form-field>
+            <mat-form-field class="input-full-width">
+                <mat-label>Prospecto</mat-label>
+                <input matInput placeholder="Nome do Adquirente" [(ngModel)]="oportunidade.nomeProspecto" name="nomeProspecto" />
+            </mat-form-field>
+
+            <mat-form-field class="input-full-width">
+                <mat-label>Valor</mat-label>
+                <input matInput placeholder="Valor" [(ngModel)]="oportunidade.valor" name="valor" />
+            </mat-form-field>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button type="submit" mat-raised-button color="primary" matTooltip="Clique para cadastrar a oportunidade" 
+            (click)="adicionar()" >Cadastrar</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
+<br>
+<table mat-table [dataSource]="oportunidades" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="Descrição">
+        <th mat-header-cell *matHeaderCellDef> Descrição </th>
+        <td mat-cell *matCellDef="let oportunidade"> {{ oportunidade.descricao }} </td>
+        <td mat-footer-cell *matFooterCellDef> Total </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Prospecto">
+        <th mat-header-cell *matHeaderCellDef> Prospecto </th>
+        <td mat-cell *matCellDef="let oportunidade"> {{ oportunidade.nomeProspecto }} </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <ng-container matColumnDef="Valor">
+        <th mat-header-cell *matHeaderCellDef> Valor </th>
+        <td mat-cell *matCellDef="let oportunidade"> {{ oportunidade.valor | currency }} </td>
+        <td mat-footer-cell *matFooterCellDef> {{getValorTotal() | currency}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colunasExibidas"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunasExibidas;"></tr>
+    <tr mat-footer-row *matFooterRowDef="colunasExibidas"></tr>
+</table>
